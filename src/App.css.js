@@ -1,10 +1,28 @@
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
+
+
+export const GlobalStyle = createGlobalStyle`
+    html {
+        width:100%;
+        height:100%;
+    }
+    body {
+        width:100%;
+        height:100%;
+    }
+
+    * {
+        user-select : none;
+        -ms-user-select : none;
+        outline : 0;
+        margin : 0;
+        padding : 0;
+        -webkit-tap-highlight-color : rgba(0,0,0,0);
+    }
+`;
+
 
 export const Wrapper = styled.div`
-    top:0;
-    left:0;
-    position:absolute;
     width:100%;
     height:100%;
-    font-family: '나눔바른고딕','Nanum Barun Gothic','Noto Sans KR','Malgun Gothic';
 `;
