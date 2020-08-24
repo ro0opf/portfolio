@@ -1,10 +1,12 @@
-const Ball = (stageWidth, stageHeight, radius, speed) => {
+import {useEffect} from "react";
+
+function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
     let vx = speed;
     let vy = speed;
 
     const diameter = radius * 2;
-    let x = diameter + (Math.random() * stageWidth - diameter);
-    let y = diameter + (Math.random() * stageHeight - diameter);
+    let x = radius + (Math.random() * (stageWidth - diameter));
+    let y = radius + (Math.random() * (stageHeight - diameter));
 
     const draw = (ctx, stageWidth, stageHeight) => {
         x += vx;
@@ -24,14 +26,17 @@ const Ball = (stageWidth, stageHeight, radius, speed) => {
         const minY = radius;
         const maxY = stageHeight - radius;
 
-        if(x <= minX || x >= maxX){
-            vx += -1;
+        if (x <= minX || x >= maxX) {
+            vx *= -1;
             x += vx;
-        }else if(y <= minY || y >= maxY){
-            vy += -1;
+        } else if (y <= minY || y >= maxY) {
+            vy *= -1;
             y += vy;
         }
     }
+
+    return {draw};
 }
+
 
 export default Ball;

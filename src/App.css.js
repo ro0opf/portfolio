@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
         padding : 0;
         -webkit-tap-highlight-color : rgba(0,0,0,0);
     }
+
+    div.root{
+        width:100%;
+        height:100%;
+    }
 `;
 
 
