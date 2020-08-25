@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useState} from "react";
 
 function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
     let vx = speed;
@@ -18,6 +18,8 @@ function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
         ctx.fill();
+
+        return {x,y, vx, vy};
     }
 
     const bounceWindow = (stageWidth, stageHeight) => {
@@ -35,7 +37,10 @@ function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
         }
     }
 
-    return {draw};
+    function addVx(value){
+        vx += value;
+    }
+    return {draw, addVx};
 }
 
 
