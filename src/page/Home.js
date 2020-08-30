@@ -7,7 +7,7 @@ const Canvas = props => {
   const [stageWidth, setStageWidth] = useState(document.body.clientWidth);
   const [stageHeight, setStageHeight] = useState(document.body.clientHeight);
   const ball = Ball(canvasRef, stageWidth, stageHeight, 60, 5);
-  const ball2 = Ball(canvasRef, stageWidth, stageHeight, 60, 15);
+  const ball2 = Ball(canvasRef, stageWidth, stageHeight, 60, 5);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,8 +25,12 @@ const Canvas = props => {
 
     const render = () => {
       ctx.clearRect(0, 0, stageWidth, stageHeight);
-      ball.draw(ctx, stageWidth, stageHeight);
-      ball2.draw(ctx, stageWidth, stageHeight);
+      const {vx : x1, vy : y1} = ball.draw(ctx, stageWidth, stageHeight);
+      const {vx : x2, vy : y2} = ball2.draw(ctx, stageWidth, stageHeight);
+
+      console.log(x1);
+      console.log(x2);
+      ball.addVx(2);
       window.requestAnimationFrame(render);
     }
     render();
