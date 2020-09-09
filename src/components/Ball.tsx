@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useState} from "react"
 
-function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
+function Ball(stageWidth : number, stageHeight : number, radius : number, speed : number) {
     let vx = speed;
     let vy = speed;
 
@@ -8,7 +8,7 @@ function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
     let x = radius + (Math.random() * (stageWidth - diameter));
     let y = radius + (Math.random() * (stageHeight - diameter));
 
-    const draw = (ctx, stageWidth, stageHeight) => {
+    const draw = (ctx : CanvasRenderingContext2D, stageWidth : number, stageHeight : number) => {
         x += vx;
         y += vy;
 
@@ -22,7 +22,7 @@ function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
         return {x,y, vx, vy};
     }
 
-    const bounceWindow = (stageWidth, stageHeight) => {
+    const bounceWindow = (stageWidth : number, stageHeight : number) => {
         const minX = radius;
         const maxX = stageWidth - radius;
         const minY = radius;
@@ -37,7 +37,7 @@ function Ball(canvasRef, stageWidth, stageHeight, radius, speed) {
         }
     }
 
-    function addVx(value){
+    function addVx(value : number){
         vx += value;
     }
     return {draw, addVx};

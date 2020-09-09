@@ -1,17 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Wrapper } from './Home.css.js';
-import Ball from '../components/Ball.js';
+import React, { useState, useRef, useEffect } from 'react'
+import { Wrapper } from './Home.css'
+import Ball from '../components/Ball'
 
-const Canvas = props => {
-  const canvasRef = useRef(null);
+const Canvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [stageWidth, setStageWidth] = useState(document.body.clientWidth);
   const [stageHeight, setStageHeight] = useState(document.body.clientHeight);
-  const ball = Ball(canvasRef, stageWidth, stageHeight, 60, 5);
-  const ball2 = Ball(canvasRef, stageWidth, stageHeight, 60, 5);
+  const ball = Ball(stageWidth, stageHeight, 60, 5);
+  const ball2 = Ball(stageWidth, stageHeight, 60, 5);
+  let frameId : number
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const canvas : HTMLCanvasElement = canvasRef.current!;
+    const ctx = canvas.getContext('2d')!;
 
     const resize = () =>{
       setStageWidth(document.body.clientWidth);
@@ -31,7 +32,7 @@ const Canvas = props => {
       console.log(x1);
       console.log(x2);
       ball.addVx(2);
-      window.requestAnimationFrame(render);
+      frameId = window.requestAnimationFrame(render)
     }
     render();
 
@@ -39,12 +40,12 @@ const Canvas = props => {
 
     return () => {
       window.removeEventListener('resize', resize);
-      window.cancelAnimationFrame(render);
+      window.cancelAnimationFrame(frameId);
     }
   }, );
 
   return (
-    <canvas ref={canvasRef} {...props}/>
+    <canvas ref={canvasRef} />
   )
 }
 

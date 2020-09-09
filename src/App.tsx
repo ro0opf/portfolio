@@ -1,7 +1,7 @@
-import React from 'react';
-import { Wrapper, GlobalStyle } from './App.css.js';
-import { Route, Switch } from 'react-router-dom';
-import Home from './page/Home.js';
+import React from 'react'
+import { Wrapper, GlobalStyle } from './App.css'
+import { Route, Switch } from 'react-router-dom'
+import Home from './page/Home'
 
 function App() {
   return (
